@@ -1,0 +1,67 @@
+﻿@model List<UsuarioModel>
+
+
+@Html.ActionLink("Crear nuevo Usuario", "CrearUsuario")
+
+<br />
+<br />
+<br />
+<strong>
+    @TempData["Mensaje"]
+</strong>
+<br />
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Nombre")
+        </th>
+        <th>
+            @Html.Label("Email")
+        </th>
+        <th>
+            @Html.Label("Fecha Registro")
+        </th>
+        <th>
+            @Html.Label("Activo")
+        </th>
+        <th>
+            @Html.Label("Fecha Actualización")
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.HiddenFor(modelItem => item.id_usuario)
+
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_registro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_actualizacion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar Usuario", "EditarUsuario", new { id = item.id_usuario })
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar Usuario", "EliminarUsuario", new { id = item.id_usuario }, new { onclick = "return confirm('¿Está seguro que desea eliminar a este usuario?')" })
+            </td>
+        </tr>
+    }
+
+</table>

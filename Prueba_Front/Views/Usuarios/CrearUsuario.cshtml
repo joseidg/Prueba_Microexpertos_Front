@@ -1,0 +1,46 @@
+﻿@model UsuarioModel
+
+@using (Html.BeginForm("Crear", "Usuarios", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Nombre")
+                @Html.TextBoxFor(modelItem => modelItem.nombre, new { required = "True" })
+            </th>
+            <th>
+                @Html.Label("Email")
+                @Html.EditorFor(modelItem => modelItem.email, new { required = "True" })
+            </th>
+            <th>
+                @Html.Label("Fecha Registro")
+                @Html.TextBoxFor(modelItem => modelItem.fecha_registro, new { required = "True", @type="date"})
+
+            </th>
+            <th>
+                @Html.Label("Activo")
+                @Html.CheckBoxFor(modelItem => modelItem.activo)
+
+            </th>
+            <th></th>
+        </tr>
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar Cambios" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+
+
+<script>
+$(document).ready(function () {
+   $(".datepicker").datepicker({
+      dateFormat: "dd-mm-yy",
+      changemonth: true,
+      changeyear: true
+      });
+   });
+</script>

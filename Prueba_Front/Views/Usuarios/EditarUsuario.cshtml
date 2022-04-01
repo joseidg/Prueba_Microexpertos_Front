@@ -1,0 +1,47 @@
+﻿@model UsuarioModel
+
+@using (Html.BeginForm("Editar", "Usuarios", FormMethod.Post))
+{
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Nombre")
+            </th>
+            <th>
+                @Html.Label("Email")
+            </th>
+            <th>
+                @Html.Label("Fecha Registro")
+            </th>
+            <th>
+                @Html.Label("Activo")
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            @Html.HiddenFor(modelItem => modelItem.id_usuario)
+
+            <td>
+                @Html.EditorFor(modelItem => modelItem.nombre)
+            </td>
+
+            <td>
+                @Html.EditorFor(modelItem => modelItem.email)
+            </td>
+            <td>
+                @Html.EditorFor(modelItem => modelItem.fecha_registro)
+            </td>
+            <td>
+                @Html.EditorFor(modelItem => modelItem.activo)
+            </td>
+        </tr>
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar Cambios" class="btn btn-success" />
+        </div>
+    </div>
+}
